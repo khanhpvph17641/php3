@@ -100,14 +100,7 @@ class UserController extends Controller
         $user ->fill($request->all());
         $users = User::find($id);
         if($user){
-            if($user->avatar != null){
-                if ($request->hasFile('avatar')) {
-                    $avatar = $request->avatar;
-                    $avatarName = $avatar->hashName();
-                    $avatarName = $request->username . '_' . $avatarName;
-                    $users->avatar = $avatar->storeAs('images/users', $avatarName);
-                } 
-            }
+            
             $users->name = $user->name;
             $users->email = $user->email;
             $users->username = $user->username;
